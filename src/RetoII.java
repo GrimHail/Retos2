@@ -20,7 +20,7 @@ public class RetoII {
         lista = new float[cantidadCompetidores];
 
         //Hacemos que el usuario digite los nombres con sus tiempos de los competidores
-        //Usabdo un for para que la posicion donde se guardan los datos cambie
+        //Usando un for para que la posicion donde se guardan los datos cambie
         for (int i = 0; i < nombreCompetidor.length; i+=1){
             //Solicitamos al usuario que digite el nombre del competidor
             System.out.print("Digita el nombre del competidor N°"+ (i+1)+" : ");
