@@ -6,7 +6,7 @@ public class RetoIV {
         //Declaramos variebles e Inicializamos las matrices
         String [][] nombreProducto = new String[4][4];
         int [][] precioProducto = new int[4][4];
-        String letra;
+        String letra, letraMaquina = null;
         int i ,j;
 
         //Creamos el objeto de la clase Scanner
@@ -51,24 +51,42 @@ public class RetoIV {
 
         System.out.println("Maquina Expendedora");
 
+
         for (i = 0; i < 4; i+=1){
+            switch (i){
+                case 0:
+                    letraMaquina = "A";
+                    break;
+                case 1:
+                    letraMaquina = "B";
+                    break;
+                case 2:
+                    letraMaquina = "C";
+                    break;
+                case 3:
+                    letraMaquina = "D";
+                    break;
+            }
             System.out.println("\n____________________________________________________________________________________________________________________________________________________\n");
             for (j = 0; j <4; j+=1){
-                System.out.print("|      COD " + i + j + "  " + nombreProducto[i][j] + "  $" + precioProducto[i][j] + "   |");
+                System.out.print("|      COD " + letraMaquina + (j+1) + "  " + nombreProducto[i][j] + "  $" + precioProducto[i][j] + "   |");
             }
+            System.out.println("\n____________________________________________________________________________________________________________________________________________________\n");
+
         }
+
 
         System.out.println("\nDigita  el codigo del producto que quieres (ej: A1, D4): ");
         System.out.print("Letra: ");
         letra = sc.next().toLowerCase();
         System.out.print("Numero: ");
-        j = sc.nextInt();
+        j = sc.nextInt()-1;
 
         switch (letra){
             case "a":
                 i = 0;
                 System.out.println("____________________");
-                System.out.println("|       " + i + j);
+                System.out.println("|       " + letraMaquina + (j+1) );
                 System.out.println("|  " + nombreProducto[i][j]); 
                 System.out.println("|   $" + precioProducto[i][j]);
                 System.out.println("____________________");
@@ -76,7 +94,7 @@ public class RetoIV {
             case "b":
                 i = 1;
                 System.out.println("____________________");
-                System.out.println("|       " + i + j);
+                System.out.println("|       " + letraMaquina + (j+1));
                 System.out.println("|  " + nombreProducto[i][j]); 
                 System.out.println("|   $" + precioProducto[i][j]);
                 System.out.println("____________________");
@@ -84,7 +102,7 @@ public class RetoIV {
             case "c":
                 i = 2;
                 System.out.println("____________________");
-                System.out.println("|       " + i + j);
+                System.out.println("|       " + letraMaquina + (j+1));
                 System.out.println("|  " + nombreProducto[i][j]); 
                 System.out.println("|   $" + precioProducto[i][j]);
                 System.out.println("____________________");
@@ -92,7 +110,7 @@ public class RetoIV {
             case "d":
                 i = 3;
                 System.out.println("____________________");
-                System.out.println("|       " + i + j);
+                System.out.println("|       " + letraMaquina + (j+1));
                 System.out.println("|  " + nombreProducto[i][j]); 
                 System.out.println("|   $" + precioProducto[i][j]);
                 System.out.println("____________________");

@@ -133,20 +133,3 @@ public class RetoIII {
         sc.close();
     }
 }
-
-/*
-*
-*
-* //Condicional if-else para comparar la letra ingresada por el usuario con la letra segun la posicion
-                        if (palabra[j].equalsIgnoreCase(letra)) {
-                            System.out.println("Bien. La letra N°" + j + " es " + letra + "\n");
-                            //Contador para saber si hizo correctamente todo
-                            num_1 += 1;
-                            //Si acerto la letra el break hace que rompa el ciclo while y se diriga al for para que pueda avanzar a la siguiente posicion del array
-                            break;
-                            //Else para mostraar si la letra que ingreso no es la misma
-                        } else {
-                            System.out.println("Erroneo. La letra ingresada es incorrecta");
-                            //Aumentador de intentos
-                            inte += 1;
-                        }*/

@@ -155,6 +155,7 @@ public class RetoV {
             System.out.print("\n¿Quieres jugar concentrese? si o no :");
             preg = sc.next().toLowerCase();
         }
+        sc.close();
     }
 }
 
