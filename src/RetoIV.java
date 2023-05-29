@@ -51,7 +51,7 @@ public class RetoIV {
 
         System.out.println("Maquina Expendedora");
 
-
+        //Generamos letras necesarias para mostrar cordenadas al usaurio
         for (i = 0; i < 4; i+=1){
             switch (i){
                 case 0:
@@ -67,6 +67,8 @@ public class RetoIV {
                     letraMaquina = "D";
                     break;
             }
+
+            //Con el ciclo de for mostramos las opciones disponibles
             System.out.println("\n____________________________________________________________________________________________________________________________________________________\n");
             for (j = 0; j <4; j+=1){
                 System.out.print("|      COD " + letraMaquina + (j+1) + "  " + nombreProducto[i][j] + "  $" + precioProducto[i][j] + "   |");
@@ -75,14 +77,16 @@ public class RetoIV {
 
         }
 
-
+        //Solicitamos el codigo de la posicion al usuario
         System.out.println("\nDigita  el codigo del producto que quieres (ej: A1, D4): ");
         System.out.print("Letra: ");
         letra = sc.next().toLowerCase();
         System.out.print("Numero: ");
         j = sc.nextInt()-1;
 
+        //Segun la letra que ingrese el usuario seleccionamos la posicion de la fila
         switch (letra){
+            //Mostramos en cada case el resultado obtenido
             case "a":
                 i = 0;
                 System.out.println("____________________");

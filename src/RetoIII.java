@@ -30,9 +30,12 @@ public class RetoIII {
                 System.out.println("=========================================================================================");
                 System.out.println("|                                                                                       |");
                 System.out.println("|                      « ¿Cuantas letras tiene tu palabra? »                            |");
-                //Cuantas letras va a tener la palabra
+                //Capturamos cual es la cantidad de espacios en el array
+                //Array para guardar la palabra que asigna el usuario
                 palabra = new String[num = sc.nextInt()];
+                //Array que va a observar el usuario
                 vista = new String[num];
+                //Array para realizar a comparacion de las elecciones del usuario
                 compr = new String[num];
                 System.out.println("|                                                                                       |");
                 System.out.println("=========================================================================================");
@@ -42,63 +45,96 @@ public class RetoIII {
                 for (int i = 0; i < palabra.length; i++){
                     System.out.print("Ingresa la letra N°"+(i+1)+" de tu palabra: ");
                     palabra[i] = (pal = sc.next().toLowerCase());
+                    //Guradamos los mismos valores en los mismos espacios del array que va a observar el usuario
                     compr[i] = pal;
+                    //Guardamos los valores que va a ver el creador del juego en primera instancia
                     vista[i] = "_";
                 }
 
+                // Ciclo while para que el codigo se ejecute el numero de veces del tamaño del array.
+                //Este array es usado para que cuaando el usuario gane, termine el juego
                 while (num_1 < palabra.length){
-                    //Ciclo for para que el jugador ingrese el numero de letras segun el numero de espacios dentro del array
+                    //Ciclo while para condicionar que no se excedan el numero de intentos permitidos
                     while(inte < 3){
+                        //Contador para saber si seguir mostrando un mensaje
                         a=0;
-                        //Ciclo while para el numero maximo de intentos de adivinar
+                        // Ciclo for para que  se vayan comparando diferentes posiciones de las letras
                         for(int i = 0; i < palabra.length;){
                             System.out.println("\n");
 
+                            //Ciclo for para mostrar el progreso en mostrar las parejas que se han encontrado
                             for (int j = 0; j < vista.length; j+=1){
                                 System.out.print(vista[j]);
                             }
 
+                            //Mensajes para mostrar el numero de intentos que llevan y solicitar la letra
                             System.out.println("\n\nEste es tu intento numero: " + (inte+1));
                             System.out.print("Digite la letra N°" + (i+1) + " : ");
                             letra = sc.next().toLowerCase();
 
 
+                            //Contadores/Limpiadores
+                            //Contador cuenta las veces que la letra fue comparada y no estaba dentro del array.Limpiador
                             m = 0;
+                            //Contador para saber si ya no hay mas letras que comparar. Limpiador
                             num_1 = 0;
+                            //Contador para saber si seguir mostrando un mensaje.Limpiador
                             l = 0;
+
+                            //Ciclo for para comparar si la letra que se ingreso es correcta
                             for (int j = 0; j < palabra.length; j+=1){
+                                //Condicional para saber si es correcta la palabra y que esta no se haya ingresado antes
                                 if (compr[j].equalsIgnoreCase(letra) && palabra[j] != null){
+                                    //Contador para mostrar que ya se puede seguir a la siguiente letra
                                     i+=1;
+                                    //Guardamos la letra que selecciono el usuario para mostrarla y mostrar el progreso
                                     vista[j] = palabra[j];
+                                    //Guardamos un null dentro del array palabra para que no se compare esa posicion
                                     palabra[j] = null;
+                                    //Rompemos el ciclo para que siga con la siguiente palabra
                                     break;
+
+                                //Condicional en caso de que el usuario ingreso una letra que ya fue verificada
                                 } else if (palabra[j] == null && compr[j].equalsIgnoreCase(letra)) {
+                                    //Guardamos la letra que el usuario ingreso
                                     palab = vista[j];
+                                    //Variable para luego mostrar al usuario que esa letra ya no se repite
                                     l=1;
+
                                 } else {
+                                    //Contador que va sumando las veces que la letra fue comparada y no estaba dentro del array
                                     m+=1;
                                 }
                             }
 
+                            //Condicional para saber si mostrar un mensaje
                             if (l != 0){
-                                System.out.println("Esta letra ya no se repite");
+                                //Mensaje de que la palabra ingresada ya fue registrada
+                                System.out.println("Esta letra "+palab+" ya no se repite");
+                                //Condicional para saber si seguir mostrando elm
                                 if (a == 0){
                                     l = 0;
                                 }
                             }
 
+                            //Ciclo for para comparar si ya se termino de encontrar todas las letras
                             for (int j = 0; j< palabra.length; j+=1){
+                                //Comparar si la posicion hay un null
                                 if (palabra[j] == null){
+                                    //Contador para ir sumando el numero de veces que hay null dentro del array
                                     num_1+=1;
                                 }
                             }
 
+                            //Condicional para saber si mostrar si la letra ingresada es incorrecta
                             if (m == palabra.length){
                                 System.out.println("La letra ingresada es incorrecta");
+                                //Contador para ir sumando cada vez que se equivoca el usuario
                                 inte+=1;
                             }
 
 
+                            //Condicional para acabar con el juego si el usuario acerto todas las oportunidades
                             if (num_1 == palabra.length){
                                 inte = 4;
                                 break;
@@ -118,18 +154,19 @@ public class RetoIII {
                 System.out.println("ERROR: El mensaje recibido no es valido.Vuelve a intentar");
         }
 
-        //Condicional para saber si se acerto correctamente todas las letras
+        //Condicional para saber si se acerto correctamente todas las letras y mostrar mensaje de Felicitacion
         if(num_1 == palabra.length){
             System.out.println("FELICIDADES, Ganaste. La palabra es:");
             //Ciclo para mostrar la palabra guardada
             for (int i = 0; i < palabra.length; i++){
                 System.out.print(vista[i]);
             }
-            //Mensaje para saber si gasto todos sus golpes
+        //Mensaje para saber si gasto todos sus intentos
         }else if(inte == 3){
             System.out.println("Excediste el numero de intentos");
         }
 
+        //Cerramos el buffer
         sc.close();
     }
 }
